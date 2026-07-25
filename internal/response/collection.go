@@ -111,17 +111,17 @@ func writeODataCollectionWithNavigationResponse(w http.ResponseWriter, r *http.R
 			"The requested format is not supported. Only application/json and application/atom+xml are supported for data responses.")
 	}
 
-	if IsAtomFormat(r) {
-		// For Atom format, transform data with minimal metadata to populate @odata.id per entry.
-		transformedData := addNavigationLinks(data, metadata, expandOptions, selectedNavProps, r, entitySetName, MetadataMinimal, fullMetadata)
-		if transformedData == nil {
-			transformedData = []interface{}{}
-		}
-		keyProps := metadata.GetKeyProperties()
-		err := WriteAtomCollection(w, r, entitySetName, transformedData, count, nextLink, deltaLink, keyProps)
-		releaseOrderedMaps(transformedData)
-		return err
-	}
+	// if IsAtomFormat(r) {
+	// 	// For Atom format, transform data with minimal metadata to populate @odata.id per entry.
+	// 	transformedData := addNavigationLinks(data, metadata, expandOptions, selectedNavProps, r, entitySetName, MetadataMinimal, fullMetadata)
+	// 	if transformedData == nil {
+	// 		transformedData = []interface{}{}
+	// 	}
+	// 	keyProps := metadata.GetKeyProperties()
+	// 	err := WriteAtomCollection(w, r, entitySetName, transformedData, count, nextLink, deltaLink, keyProps)
+	// 	releaseOrderedMaps(transformedData)
+	// 	return err
+	// }
 
 	metadataLevel := GetODataMetadataLevel(r)
 

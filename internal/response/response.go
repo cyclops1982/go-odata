@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	HeaderODataVersion = "OData-Version"
+	HeaderODataVersion = "Odata-Version"
 )
 
 // SetODataVersionHeaderFromRequest sets the OData-Version header based on the negotiated version in the request context.
